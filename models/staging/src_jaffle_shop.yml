@@ -1,0 +1,10 @@
+version: 2
+
+sources:
+  - name: jaffle_shop # Le nom que nous utiliserons dans dbt
+    database: workspace # Souvent 'hive_metastore' ou 'main'
+    schema: default # Là où vous avez chargé les CSV
+    tables:
+      - name: jaffle_shop_customers # Le nom exact de la table dans Databricks
+      - name: jaffle_shop_orders
+      - name: stripe_payments
