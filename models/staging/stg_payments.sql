@@ -5,4 +5,5 @@ select
     status as payment_status,
     amount,
     created
-from {{ source("jaffle_shop", "stripe_payments")}}
+from {{ source("jaffle_shop", "stripe_payments") }}
+where payment_status = "success"
