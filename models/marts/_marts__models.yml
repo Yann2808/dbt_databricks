@@ -2,9 +2,18 @@ version: 2
 
 models:
   - name: dim_customers
-    description: "Table finale regroupant les informations clients et leur nombre total de commandes."
+    description: "Table finale regroupant les informations clients, leur nombre total de commandes et leur LTV."
     columns:
       - name: customer_id
         description: "Identifiant unique du client (Clé primaire)."
+
       - name: nb_commande
-        description: "Nombre total de commandes passées par ce client."
+        description: "Nombre total de commandes passées par un client."
+        tests:
+          - not_null
+
+      - name: lifetime_value
+        description: "Montant total dépensé par le client en euros."
+        tests:
+          - dbt_utils.accepted_range:
+              min_value: 0
